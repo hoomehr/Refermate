@@ -41,10 +41,7 @@ const ReferralRequestForm: React.FC<ReferralRequestFormProps> = ({ onSubmit }) =
       isValid = false;
     }
 
-    if (!cvUrl) {
-      newErrors.cvUrl = 'CV/Resume URL is required';
-      isValid = false;
-    }
+    // CV/Resume URL is optional, so no validation needed
 
     setErrors(newErrors);
     return isValid;
@@ -78,7 +75,7 @@ const ReferralRequestForm: React.FC<ReferralRequestFormProps> = ({ onSubmit }) =
       />
 
       <Input
-        label="CV/Resume URL"
+        label="CV/Resume URL (Optional)"
         type="url"
         value={cvUrl}
         onChange={(e) => setCvUrl(e.target.value)}
