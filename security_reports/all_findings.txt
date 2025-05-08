@@ -1,0 +1,1346 @@
+# TFSec Findings
+
+# [tfsec] Results
+## Failed: 39 issue(s)
+| # | ID | Severity | Title | Location | Description |
+|---|----|----------|-------|----------|-------------|
+| 1 | `aws-cloudfront-enable-logging` | *MEDIUM* | _Cloudfront distribution should have Access Logging configured_ | `terraform/main.tf:403-458` | Distribution does not have logging enabled. |
+| 2 | `aws-cloudfront-enable-waf` | *HIGH* | _CloudFront distribution does not have a WAF in front._ | `terraform/main.tf:403-458` | Distribution does not utilise a WAF. |
+| 3 | `aws-cloudfront-use-secure-tls-policy` | *HIGH* | _CloudFront distribution uses outdated SSL/TLS protocols._ | `terraform/main.tf:451-457` | Distribution allows unencrypted communications. |
+| 4 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:177-182` | Security group rule does not have a description. |
+| 5 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:170-175` | Security group rule does not have a description. |
+| 6 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:153-158` | Security group rule does not have a description. |
+| 7 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:146-151` | Security group rule does not have a description. |
+| 8 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:139-144` | Security group rule does not have a description. |
+| 9 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:132-137` | Security group rule does not have a description. |
+| 10 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:115-120` | Security group rule does not have a description. |
+| 11 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:108-113` | Security group rule does not have a description. |
+| 12 | `aws-ec2-add-description-to-security-group-rule` | *LOW* | _Missing description for security group rule._ | `terraform/main.tf:101-106` | Security group rule does not have a description. |
+| 13 | `aws-ec2-enforce-launch-config-http-token-imds` | *HIGH* | _aws_instance should activate session tokens for Instance Metadata Service._ | `terraform/main.tf:262-305` | Launch template does not require IMDS access to require a token |
+| 14 | `aws-ec2-no-public-egress-sgr` | *CRITICAL* | _An egress security group rule allows traffic to /0._ | `terraform/main.tf:181` | Security group rule allows egress to multiple public internet addresses. |
+| 15 | `aws-ec2-no-public-egress-sgr` | *CRITICAL* | _An egress security group rule allows traffic to /0._ | `terraform/main.tf:157` | Security group rule allows egress to multiple public internet addresses. |
+| 16 | `aws-ec2-no-public-egress-sgr` | *CRITICAL* | _An egress security group rule allows traffic to /0._ | `terraform/main.tf:119` | Security group rule allows egress to multiple public internet addresses. |
+| 17 | `aws-ec2-no-public-ingress-sgr` | *CRITICAL* | _An ingress security group rule allows traffic from /0._ | `terraform/main.tf:112` | Security group rule allows ingress from public internet. |
+| 18 | `aws-ec2-no-public-ingress-sgr` | *CRITICAL* | _An ingress security group rule allows traffic from /0._ | `terraform/main.tf:105` | Security group rule allows ingress from public internet. |
+| 19 | `aws-ec2-no-public-ip-subnet` | *HIGH* | _Instances in a subnet should not receive a public IP address by default._ | `terraform/main.tf:40` | Subnet associates public IP address. |
+| 20 | `aws-ec2-no-public-ip-subnet` | *HIGH* | _Instances in a subnet should not receive a public IP address by default._ | `terraform/main.tf:30` | Subnet associates public IP address. |
+| 21 | `aws-ec2-require-vpc-flow-logs-for-all-vpcs` | *MEDIUM* | _VPC Flow Logs is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC. After you've created a flow log, you can view and retrieve its data in Amazon CloudWatch Logs. It is recommended that VPC Flow Logs be enabled for packet "Rejects" for VPCs._ | `terraform/main.tf:19-24` | VPC Flow Logs is not enabled for VPC  |
+| 22 | `aws-elb-alb-not-public` | *HIGH* | _Load balancer is exposed to the internet._ | `terraform/main.tf:194` | Load balancer is exposed publicly. |
+| 23 | `aws-elb-drop-invalid-headers` | *HIGH* | _Load balancers should drop invalid headers_ | `terraform/main.tf:192-204` | Application load balancer is not set to drop invalid headers. |
+| 24 | `aws-elb-http-not-used` | *CRITICAL* | _Use of plain HTTP._ | `terraform/main.tf:223` | Listener for application load balancer does not use HTTPS. |
+| 25 | `aws-elb-use-secure-tls-policy` | *CRITICAL* | _An outdated SSL policy is in use by a load balancer._ | `terraform/main.tf:235` | Listener uses an outdated TLS policy. |
+| 26 | `aws-iam-no-policy-wildcards` | *HIGH* | _IAM policy should avoid use of wildcards and instead apply the principle of least privilege_ | `terraform/main.tf:507` | IAM policy document uses sensitive action 'logs:CreateLogGroup' on wildcarded resource 'arn:aws:logs:*:*:*' |
+| 27 | `aws-iam-no-policy-wildcards` | *HIGH* | _IAM policy should avoid use of wildcards and instead apply the principle of least privilege_ | `terraform/main.tf:507` | IAM policy document uses sensitive action 's3:GetObject' on wildcarded resource '74a69141-e021-46a4-84a6-4fcd201ed846' |
+| 28 | `aws-iam-no-policy-wildcards` | *HIGH* | _IAM policy should avoid use of wildcards and instead apply the principle of least privilege_ | `terraform/main.tf:507` | IAM policy document uses sensitive action 'logs:CreateLogGroup' on wildcarded resource 'arn:aws:logs:*:*:*' |
+| 29 | `aws-iam-no-policy-wildcards` | *HIGH* | _IAM policy should avoid use of wildcards and instead apply the principle of least privilege_ | `terraform/main.tf:507` | IAM policy document uses sensitive action 's3:GetObject' on wildcarded resource '74a69141-e021-46a4-84a6-4fcd201ed846' |
+| 30 | `aws-rds-enable-performance-insights` | *LOW* | _Enable Performance Insights to detect potential problems_ | `terraform/main.tf:366-373` | Instance does not have performance insights enabled. |
+| 31 | `aws-rds-enable-performance-insights` | *LOW* | _Enable Performance Insights to detect potential problems_ | `terraform/main.tf:366-373` | Instance does not have performance insights enabled. |
+| 32 | `aws-rds-encrypt-cluster-storage-data` | *HIGH* | _There is no encryption specified or encryption is disabled on the RDS Cluster._ | `terraform/main.tf:343-364` | Cluster does not have storage encryption enabled. |
+| 33 | `aws-s3-block-public-acls` | *HIGH* | _S3 Access block should block public ACL_ | `terraform/main.tf:377-398` | No public access block so not blocking public acls |
+| 34 | `aws-s3-block-public-policy` | *HIGH* | _S3 Access block should block public policy_ | `terraform/main.tf:377-398` | No public access block so not blocking public policies |
+| 35 | `aws-s3-enable-bucket-logging` | *MEDIUM* | _S3 Bucket does not have logging enabled._ | `terraform/main.tf:377-398` | Bucket does not have logging enabled |
+| 36 | `aws-s3-encryption-customer-key` | *HIGH* | _S3 encryption should use Customer Managed Keys_ | `terraform/main.tf:377-398` | Bucket does not encrypt data with a customer managed key. |
+| 37 | `aws-s3-ignore-public-acls` | *HIGH* | _S3 Access Block should Ignore Public Acl_ | `terraform/main.tf:377-398` | No public access block so not ignoring public acls |
+| 38 | `aws-s3-no-public-buckets` | *HIGH* | _S3 Access block should restrict public bucket to limit access_ | `terraform/main.tf:377-398` | No public access block so not restricting public buckets |
+| 39 | `aws-s3-specify-public-access-block` | *LOW* | _S3 buckets should each define an aws_s3_bucket_public_access_block_ | `terraform/main.tf:377-398` | Bucket does not have a corresponding public access block. |
+
+\n\n# Checkov Findings
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.2.416 
+
+terraform scan results:
+
+Passed checks: 55, Failed checks: 50, Skipped checks: 0
+
+Check: CKV_AWS_130: "Ensure VPC subnets do not assign public IP by default"
+	PASSED for resource: aws_subnet.private_subnet_a
+	File: /terraform/main.tf:46-53
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-vpc-subnets-do-not-assign-public-ip-by-default
+Check: CKV_AWS_130: "Ensure VPC subnets do not assign public IP by default"
+	PASSED for resource: aws_subnet.private_subnet_b
+	File: /terraform/main.tf:55-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-vpc-subnets-do-not-assign-public-ip-by-default
+Check: CKV_AWS_277: "Ensure no security groups allow ingress from 0.0.0.0:0 to port -1"
+	PASSED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-group-does-not-allow-all-traffic-on-all-ports
+Check: CKV_AWS_25: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389"
+	PASSED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-2
+Check: CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+	PASSED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-1-port-security
+Check: CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+	PASSED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-groups-do-not-allow-ingress-from-00000-to-port-80
+Check: CKV_AWS_277: "Ensure no security groups allow ingress from 0.0.0.0:0 to port -1"
+	PASSED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-group-does-not-allow-all-traffic-on-all-ports
+Check: CKV_AWS_25: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389"
+	PASSED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-2
+Check: CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+	PASSED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-1-port-security
+Check: CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+	PASSED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-groups-do-not-allow-ingress-from-00000-to-port-80
+Check: CKV_AWS_277: "Ensure no security groups allow ingress from 0.0.0.0:0 to port -1"
+	PASSED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-group-does-not-allow-all-traffic-on-all-ports
+Check: CKV_AWS_25: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389"
+	PASSED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-2
+Check: CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+	PASSED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-1-port-security
+Check: CKV_AWS_328: "Ensure that ALB is configured with defensive or strictest desync mitigation mode"
+	PASSED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-328
+Check: CKV_AWS_261: "Ensure HTTP HTTPS Target group defines Healthcheck"
+	PASSED for resource: aws_lb_target_group.alb_tg
+	File: /terraform/main.tf:206-218
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-kendra-index-server-side-encryption-uses-customer-managed-keys-cmks
+Check: CKV_AWS_2: "Ensure ALB protocol is HTTPS"
+	PASSED for resource: aws_lb_listener.alb_listener_https
+	File: /terraform/main.tf:231-242
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-29
+Check: CKV_AWS_46: "Ensure no hard-coded secrets exist in EC2 user data"
+	PASSED for resource: aws_launch_template.web_lt
+	File: /terraform/main.tf:262-305
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-1
+Check: CKV_AWS_88: "EC2 instance should not have public IP."
+	PASSED for resource: aws_launch_template.web_lt
+	File: /terraform/main.tf:262-305
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-12
+Check: CKV_AWS_341: "Ensure Launch template should not have a metadata response hop limit greater than 1"
+	PASSED for resource: aws_launch_template.web_lt
+	File: /terraform/main.tf:262-305
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-341
+Check: CKV_AWS_315: "Ensure EC2 Auto Scaling groups use EC2 launch templates"
+	PASSED for resource: aws_autoscaling_group.web_asg
+	File: /terraform/main.tf:307-329
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-315
+Check: CKV_AWS_153: "Autoscaling groups should supply tags to launch configurations"
+	PASSED for resource: aws_autoscaling_group.web_asg
+	File: /terraform/main.tf:307-329
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/autoscaling-groups-should-supply-tags-to-launch-configurations
+Check: CKV_AWS_133: "Ensure that RDS instances has backup policy"
+	PASSED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-rds-instances-have-backup-policy
+Check: CKV_AWS_250: "Ensure that RDS PostgreSQL instances use a non vulnerable version with the log_fdw extension (https://aws.amazon.com/security/security-bulletins/AWS-2022-004/)"
+	PASSED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-rds-postgresql-instances-use-a-non-vulnerable-version-of-log-fdw-extension
+Check: CKV_AWS_17: "Ensure all data stored in RDS is not publicly accessible"
+	PASSED for resource: aws_rds_cluster_instance.cluster_instances[0]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-2
+Check: CKV_AWS_354: "Ensure RDS Performance Insights are encrypted using KMS CMKs"
+	PASSED for resource: aws_rds_cluster_instance.cluster_instances[0]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-354
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-24
+Check: CKV_AWS_34: "Ensure CloudFront distribution ViewerProtocolPolicy is set to HTTPS"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-32
+Check: CKV_AWS_216: "Ensure CloudFront distribution is enabled"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-cloudfront-distribution-is-enabled
+Check: CKV_AWS_305: "Ensure CloudFront distribution has a default root object configured"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-305
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket_policy.bucket_policy
+	File: /terraform/main.tf:464-480
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-24
+Check: CKV_AWS_70: "Ensure S3 bucket does not allow an action with any Principal"
+	PASSED for resource: aws_s3_bucket_policy.bucket_policy
+	File: /terraform/main.tf:464-480
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-23
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: aws_iam_role.ec2_role
+	File: /terraform/main.tf:485-500
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-44
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: aws_iam_role.ec2_role
+	File: /terraform/main.tf:485-500
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-45
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: aws_iam_role.ec2_role
+	File: /terraform/main.tf:485-500
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-274
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: aws_iam_policy.ec2_policy
+	File: /terraform/main.tf:502-532
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-45
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: aws_iam_policy.ec2_policy
+	File: /terraform/main.tf:502-532
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/iam-48
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: aws_iam_role_policy_attachment.ec2_role_policy_attachment
+	File: /terraform/main.tf:534-537
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-274
+Check: CKV_AWS_17: "Ensure all data stored in RDS is not publicly accessible"
+	PASSED for resource: aws_rds_cluster_instance.cluster_instances[1]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-2
+Check: CKV_AWS_354: "Ensure RDS Performance Insights are encrypted using KMS CMKs"
+	PASSED for resource: aws_rds_cluster_instance.cluster_instances[1]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-354
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	PASSED for resource: aws.default
+	File: /terraform/main.tf:12-14
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-5
+Check: CKV_AWS_386: "Reduce potential for WhoAMI cloud image name confusion attack"
+	PASSED for resource: aws_ami.amazon_linux
+	File: /terraform/main.tf:247-260
+Check: CKV2_AWS_5: "Ensure that Security Groups are attached to another resource"
+	PASSED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-security-groups-are-attached-to-ec2-instances-or-elastic-network-interfaces-enis
+Check: CKV2_AWS_5: "Ensure that Security Groups are attached to another resource"
+	PASSED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-security-groups-are-attached-to-ec2-instances-or-elastic-network-interfaces-enis
+Check: CKV2_AWS_5: "Ensure that Security Groups are attached to another resource"
+	PASSED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-security-groups-are-attached-to-ec2-instances-or-elastic-network-interfaces-enis
+Check: CKV2_AWS_35: "AWS NAT Gateways should be utilized for the default route"
+	PASSED for resource: aws_route_table.public_route_table
+	File: /terraform/main.tf:71-81
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-nat-gateways-are-utilized-for-the-default-route
+Check: CKV2_AWS_72: "Ensure AWS CloudFront origin protocol policy enforces HTTPS-only"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-2-72
+Check: CKV2_AWS_54: "Ensure AWS CloudFront distribution is using secure SSL protocols for HTTPS communication"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-2-54
+Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
+	PASSED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone
+Check: CKV2_AWS_44: "Ensure AWS route table with VPC peering does not contain routes overly permissive to all traffic"
+	PASSED for resource: aws_route_table.public_route_table
+	File: /terraform/main.tf:71-81
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-route-table-with-vpc-peering-does-not-contain-routes-overly-permissive-to-all-traffic
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+	PASSED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone
+Check: CKV2_AWS_56: "Ensure AWS Managed IAMFullAccess IAM policy is not used."
+	PASSED for resource: aws_iam_role.ec2_role
+	File: /terraform/main.tf:485-500
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56
+Check: CKV2_AWS_74: "Ensure AWS Load Balancers use strong ciphers"
+	PASSED for resource: aws_lb_listener.alb_listener_http
+	File: /terraform/main.tf:220-229
+Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	PASSED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	PASSED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest
+Check: CKV2_AWS_46: "Ensure AWS CloudFront Distribution with S3 have Origin Access set to enabled"
+	PASSED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-aws-cloudfromt-distribution-with-s3-have-origin-access-set-to-enabled
+Check: CKV_AWS_130: "Ensure VPC subnets do not assign public IP by default"
+	FAILED for resource: aws_subnet.public_subnet_a
+	File: /terraform/main.tf:26-34
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-vpc-subnets-do-not-assign-public-ip-by-default
+
+		26 | resource "aws_subnet" "public_subnet_a" {
+		27 |   vpc_id            = aws_vpc.main.id
+		28 |   cidr_block        = "10.0.1.0/24"
+		29 |   availability_zone = "us-east-1a" # Replace with your desired AZ
+		30 |   map_public_ip_on_launch = true
+		31 |   tags = {
+		32 |     Name = "react-app-public-subnet-a"
+		33 |   }
+		34 | }
+
+Check: CKV_AWS_130: "Ensure VPC subnets do not assign public IP by default"
+	FAILED for resource: aws_subnet.public_subnet_b
+	File: /terraform/main.tf:36-44
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-vpc-subnets-do-not-assign-public-ip-by-default
+
+		36 | resource "aws_subnet" "public_subnet_b" {
+		37 |   vpc_id            = aws_vpc.main.id
+		38 |   cidr_block        = "10.0.2.0/24"
+		39 |   availability_zone = "us-east-1b" # Replace with your desired AZ
+		40 |   map_public_ip_on_launch = true
+		41 |   tags = {
+		42 |     Name = "react-app-public-subnet-b"
+		43 |   }
+		44 | }
+
+Check: CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
+	FAILED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-382
+
+		96  | resource "aws_security_group" "allow_alb" {
+		97  |   name        = "allow_alb"
+		98  |   description = "Allow traffic to ALB"
+		99  |   vpc_id      = aws_vpc.main.id
+		100 | 
+		101 |   ingress {
+		102 |     from_port   = 80
+		103 |     to_port     = 80
+		104 |     protocol    = "tcp"
+		105 |     cidr_blocks = ["0.0.0.0/0"]
+		106 |   }
+		107 | 
+		108 |   ingress {
+		109 |     from_port   = 443
+		110 |     to_port     = 443
+		111 |     protocol    = "tcp"
+		112 |     cidr_blocks = ["0.0.0.0/0"]
+		113 |   }
+		114 | 
+		115 |   egress {
+		116 |     from_port   = 0
+		117 |     to_port     = 0
+		118 |     protocol    = "-1"
+		119 |     cidr_blocks = ["0.0.0.0/0"]
+		120 |   }
+		121 | 
+		122 |   tags = {
+		123 |     Name = "allow_alb"
+		124 |   }
+		125 | }
+
+Check: CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+	FAILED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-groups-do-not-allow-ingress-from-00000-to-port-80
+
+		96  | resource "aws_security_group" "allow_alb" {
+		97  |   name        = "allow_alb"
+		98  |   description = "Allow traffic to ALB"
+		99  |   vpc_id      = aws_vpc.main.id
+		100 | 
+		101 |   ingress {
+		102 |     from_port   = 80
+		103 |     to_port     = 80
+		104 |     protocol    = "tcp"
+		105 |     cidr_blocks = ["0.0.0.0/0"]
+		106 |   }
+		107 | 
+		108 |   ingress {
+		109 |     from_port   = 443
+		110 |     to_port     = 443
+		111 |     protocol    = "tcp"
+		112 |     cidr_blocks = ["0.0.0.0/0"]
+		113 |   }
+		114 | 
+		115 |   egress {
+		116 |     from_port   = 0
+		117 |     to_port     = 0
+		118 |     protocol    = "-1"
+		119 |     cidr_blocks = ["0.0.0.0/0"]
+		120 |   }
+		121 | 
+		122 |   tags = {
+		123 |     Name = "allow_alb"
+		124 |   }
+		125 | }
+
+Check: CKV_AWS_23: "Ensure every security group and rule has a description"
+	FAILED for resource: aws_security_group.allow_alb
+	File: /terraform/main.tf:96-125
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-31
+
+		96  | resource "aws_security_group" "allow_alb" {
+		97  |   name        = "allow_alb"
+		98  |   description = "Allow traffic to ALB"
+		99  |   vpc_id      = aws_vpc.main.id
+		100 | 
+		101 |   ingress {
+		102 |     from_port   = 80
+		103 |     to_port     = 80
+		104 |     protocol    = "tcp"
+		105 |     cidr_blocks = ["0.0.0.0/0"]
+		106 |   }
+		107 | 
+		108 |   ingress {
+		109 |     from_port   = 443
+		110 |     to_port     = 443
+		111 |     protocol    = "tcp"
+		112 |     cidr_blocks = ["0.0.0.0/0"]
+		113 |   }
+		114 | 
+		115 |   egress {
+		116 |     from_port   = 0
+		117 |     to_port     = 0
+		118 |     protocol    = "-1"
+		119 |     cidr_blocks = ["0.0.0.0/0"]
+		120 |   }
+		121 | 
+		122 |   tags = {
+		123 |     Name = "allow_alb"
+		124 |   }
+		125 | }
+
+Check: CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
+	FAILED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-382
+
+		127 | resource "aws_security_group" "allow_web" {
+		128 |   name        = "allow_web"
+		129 |   description = "Allow traffic to web servers"
+		130 |   vpc_id      = aws_vpc.main.id
+		131 | 
+		132 |   ingress {
+		133 |     from_port   = 80
+		134 |     to_port     = 80
+		135 |     protocol    = "tcp"
+		136 |     security_groups = [aws_security_group.allow_alb.id]
+		137 |   }
+		138 | 
+		139 |    ingress {
+		140 |     from_port   = 443
+		141 |     to_port     = 443
+		142 |     protocol    = "tcp"
+		143 |     security_groups = [aws_security_group.allow_alb.id]
+		144 |   }
+		145 | 
+		146 |   ingress {
+		147 |     from_port   = 22
+		148 |     to_port     = 22
+		149 |     protocol    = "tcp"
+		150 |     cidr_blocks = ["YOUR_IP_ADDRESS/32"]  # Replace with your IP for SSH access
+		151 |   }
+		152 | 
+		153 |   egress {
+		154 |     from_port   = 0
+		155 |     to_port     = 0
+		156 |     protocol    = "-1"
+		157 |     cidr_blocks = ["0.0.0.0/0"]
+		158 |   }
+		159 | 
+		160 |   tags = {
+		161 |     Name = "allow_web"
+		162 |   }
+		163 | }
+
+Check: CKV_AWS_23: "Ensure every security group and rule has a description"
+	FAILED for resource: aws_security_group.allow_web
+	File: /terraform/main.tf:127-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-31
+
+		127 | resource "aws_security_group" "allow_web" {
+		128 |   name        = "allow_web"
+		129 |   description = "Allow traffic to web servers"
+		130 |   vpc_id      = aws_vpc.main.id
+		131 | 
+		132 |   ingress {
+		133 |     from_port   = 80
+		134 |     to_port     = 80
+		135 |     protocol    = "tcp"
+		136 |     security_groups = [aws_security_group.allow_alb.id]
+		137 |   }
+		138 | 
+		139 |    ingress {
+		140 |     from_port   = 443
+		141 |     to_port     = 443
+		142 |     protocol    = "tcp"
+		143 |     security_groups = [aws_security_group.allow_alb.id]
+		144 |   }
+		145 | 
+		146 |   ingress {
+		147 |     from_port   = 22
+		148 |     to_port     = 22
+		149 |     protocol    = "tcp"
+		150 |     cidr_blocks = ["YOUR_IP_ADDRESS/32"]  # Replace with your IP for SSH access
+		151 |   }
+		152 | 
+		153 |   egress {
+		154 |     from_port   = 0
+		155 |     to_port     = 0
+		156 |     protocol    = "-1"
+		157 |     cidr_blocks = ["0.0.0.0/0"]
+		158 |   }
+		159 | 
+		160 |   tags = {
+		161 |     Name = "allow_web"
+		162 |   }
+		163 | }
+
+Check: CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
+	FAILED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-382
+
+		165 | resource "aws_security_group" "allow_db" {
+		166 |   name        = "allow_db"
+		167 |   description = "Allow traffic to database"
+		168 |   vpc_id      = aws_vpc.main.id
+		169 | 
+		170 |   ingress {
+		171 |     from_port   = 5432  # PostgreSQL default port
+		172 |     to_port     = 5432
+		173 |     protocol    = "tcp"
+		174 |     security_groups = [aws_security_group.allow_web.id]
+		175 |   }
+		176 | 
+		177 |   egress {
+		178 |     from_port   = 0
+		179 |     to_port     = 0
+		180 |     protocol    = "-1"
+		181 |     cidr_blocks = ["0.0.0.0/0"]
+		182 |   }
+		183 | 
+		184 |   tags = {
+		185 |     Name = "allow_db"
+		186 |   }
+		187 | }
+
+Check: CKV_AWS_23: "Ensure every security group and rule has a description"
+	FAILED for resource: aws_security_group.allow_db
+	File: /terraform/main.tf:165-187
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-31
+
+		165 | resource "aws_security_group" "allow_db" {
+		166 |   name        = "allow_db"
+		167 |   description = "Allow traffic to database"
+		168 |   vpc_id      = aws_vpc.main.id
+		169 | 
+		170 |   ingress {
+		171 |     from_port   = 5432  # PostgreSQL default port
+		172 |     to_port     = 5432
+		173 |     protocol    = "tcp"
+		174 |     security_groups = [aws_security_group.allow_web.id]
+		175 |   }
+		176 | 
+		177 |   egress {
+		178 |     from_port   = 0
+		179 |     to_port     = 0
+		180 |     protocol    = "-1"
+		181 |     cidr_blocks = ["0.0.0.0/0"]
+		182 |   }
+		183 | 
+		184 |   tags = {
+		185 |     Name = "allow_db"
+		186 |   }
+		187 | }
+
+Check: CKV_AWS_150: "Ensure that Load Balancer has deletion protection enabled"
+	FAILED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-150
+
+		192 | resource "aws_lb" "alb" {
+		193 |   name               = "react-app-alb"
+		194 |   internal           = false
+		195 |   load_balancer_type = "application"
+		196 |   security_groups    = [aws_security_group.allow_alb.id]
+		197 |   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+		198 | 
+		199 |   enable_deletion_protection = false
+		200 | 
+		201 |   tags = {
+		202 |     Name = "react-app-alb"
+		203 |   }
+		204 | }
+
+Check: CKV_AWS_91: "Ensure the ELBv2 (Application/Network) has access logging enabled"
+	FAILED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-logging-22
+
+		192 | resource "aws_lb" "alb" {
+		193 |   name               = "react-app-alb"
+		194 |   internal           = false
+		195 |   load_balancer_type = "application"
+		196 |   security_groups    = [aws_security_group.allow_alb.id]
+		197 |   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+		198 | 
+		199 |   enable_deletion_protection = false
+		200 | 
+		201 |   tags = {
+		202 |     Name = "react-app-alb"
+		203 |   }
+		204 | }
+
+Check: CKV_AWS_131: "Ensure that ALB drops HTTP headers"
+	FAILED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-alb-drops-http-headers
+
+		192 | resource "aws_lb" "alb" {
+		193 |   name               = "react-app-alb"
+		194 |   internal           = false
+		195 |   load_balancer_type = "application"
+		196 |   security_groups    = [aws_security_group.allow_alb.id]
+		197 |   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+		198 | 
+		199 |   enable_deletion_protection = false
+		200 | 
+		201 |   tags = {
+		202 |     Name = "react-app-alb"
+		203 |   }
+		204 | }
+
+Check: CKV_AWS_2: "Ensure ALB protocol is HTTPS"
+	FAILED for resource: aws_lb_listener.alb_listener_http
+	File: /terraform/main.tf:220-229
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-29
+
+		220 | resource "aws_lb_listener" "alb_listener_http" {
+		221 |   load_balancer_arn = aws_lb.alb.arn
+		222 |   port              = 80
+		223 |   protocol          = "HTTP"
+		224 | 
+		225 |   default_action {
+		226 |     type             = "forward"
+		227 |     target_group_arn = aws_lb_target_group.alb_tg.arn
+		228 |   }
+		229 | }
+
+Check: CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
+	FAILED for resource: aws_launch_template.web_lt
+	File: /terraform/main.tf:262-305
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-31
+
+		262 | resource "aws_launch_template" "web_lt" {
+		263 |   name_prefix   = "react-app-web-lt-"
+		264 |   image_id      = data.aws_ami.amazon_linux.id
+		265 |   instance_type = "t3.medium"
+		266 |   key_name = "YOUR_KEY_PAIR_NAME" # Replace with your key pair name
+		267 |   security_group_names = [aws_security_group.allow_web.name]
+		268 | 
+		269 |   network_interfaces {
+		270 |     subnet_id             = aws_subnet.private_subnet_a.id # Deploying to private subnet
+		271 |     associate_public_ip_address = false # Remove if you need to deploy to a public subnet with direct internet access
+		272 |     security_groups       = [aws_security_group.allow_web.id]
+		273 |   }
+		274 | 
+		275 |   user_data = base64encode(<<EOF
+		276 | #!/bin/bash
+		277 | sudo yum update -y
+		278 | sudo yum install -y httpd git
+		279 | sudo systemctl start httpd
+		280 | sudo systemctl enable httpd
+		281 | # Clone your react app code
+		282 | git clone YOUR_REACT_APP_GIT_REPO /var/www/html
+		283 | # Update .env file with the configuration
+		284 | # Or provide required env variables with echo command
+		285 | # Install dependencies and build your app
+		286 | sudo yum install -y nodejs
+		287 | cd /var/www/html
+		288 | npm install
+		289 | npm run build
+		290 | # Copy the build to the httpd folder
+		291 | sudo cp -r /var/www/html/build/* /var/www/html/
+		292 | EOF
+		293 |   )
+		294 | 
+		295 |   tag_specifications {
+		296 |     resource_type = "instance"
+		297 |     tags = {
+		298 |       Name = "react-app-web-server"
+		299 |     }
+		300 |   }
+		301 | 
+		302 |   lifecycle {
+		303 |     create_before_destroy = true
+		304 |   }
+		305 | }
+
+Check: CKV_AWS_139: "Ensure that RDS clusters have deletion protection enabled"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-rds-clusters-and-instances-have-deletion-protection-enabled
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_324: "Ensure that RDS Cluster log capture is enabled"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-324
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_162: "Ensure RDS cluster has IAM authentication enabled"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-rds-cluster-has-iam-authentication-enabled
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_313: "Ensure RDS cluster configured to copy tags to snapshots"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-313
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_96: "Ensure all data stored in Aurora is securely encrypted at rest"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-38
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_327: "Ensure RDS Clusters are encrypted using KMS CMKs"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-327
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV_AWS_226: "Ensure DB instance gets all minor upgrades automatically"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[0]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-db-instance-gets-all-minor-upgrades-automatically
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV_AWS_118: "Ensure that enhanced monitoring is enabled for Amazon RDS instances"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[0]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/ensure-that-enhanced-monitoring-is-enabled-for-amazon-rds-instances
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV_AWS_353: "Ensure that RDS instances have performance insights enabled"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[0]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-353
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV_AWS_310: "Ensure CloudFront distributions should have origin failover configured"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-310
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_174: "Verify CloudFront Distribution Viewer Certificate is using TLS v1.2"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-63
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_374: "Ensure AWS CloudFront web distribution has geo restriction enabled"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-374
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_68: "CloudFront Distribution should have WAF enabled"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-27
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_86: "Ensure CloudFront distribution has Access Logging enabled"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-20
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_226: "Ensure DB instance gets all minor upgrades automatically"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[1]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-db-instance-gets-all-minor-upgrades-automatically
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV_AWS_118: "Ensure that enhanced monitoring is enabled for Amazon RDS instances"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[1]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/ensure-that-enhanced-monitoring-is-enabled-for-amazon-rds-instances
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV_AWS_353: "Ensure that RDS instances have performance insights enabled"
+	FAILED for resource: aws_rds_cluster_instance.cluster_instances[1]
+	File: /terraform/main.tf:366-373
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-353
+
+		366 | resource "aws_rds_cluster_instance" "cluster_instances" {
+		367 |   count              = 2  # number of instances
+		368 |   cluster_identifier = aws_rds_cluster.default.id
+		369 |   instance_class     = "db.t3.medium" # Specify the instance class
+		370 |   engine             = aws_rds_cluster.default.engine
+		371 |   engine_version     = aws_rds_cluster.default.engine_version
+		372 |   availability_zone  = element(["us-east-1a", "us-east-1b"], count.index)
+		373 | }
+
+Check: CKV2_AWS_27: "Ensure Postgres RDS as aws_rds_cluster has Query Logging enabled"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-logging-32
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV2_AWS_12: "Ensure the default security group of every VPC restricts all traffic"
+	FAILED for resource: aws_vpc.main
+	File: /terraform/main.tf:19-24
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4
+
+		19 | resource "aws_vpc" "main" {
+		20 |   cidr_block = "10.0.0.0/16"
+		21 |   tags = {
+		22 |     Name = "react-app-vpc"
+		23 |   }
+		24 | }
+
+Check: CKV2_AWS_42: "Ensure AWS CloudFront distribution uses custom SSL certificate"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-cloudfront-distribution-uses-custom-ssl-certificate
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+Check: CKV2_AWS_20: "Ensure that ALB redirects HTTP requests into HTTPS ones"
+	FAILED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-alb-redirects-http-requests-into-https-ones
+
+		192 | resource "aws_lb" "alb" {
+		193 |   name               = "react-app-alb"
+		194 |   internal           = false
+		195 |   load_balancer_type = "application"
+		196 |   security_groups    = [aws_security_group.allow_alb.id]
+		197 |   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+		198 | 
+		199 |   enable_deletion_protection = false
+		200 | 
+		201 |   tags = {
+		202 |     Name = "react-app-alb"
+		203 |   }
+		204 | }
+
+Check: CKV2_AWS_47: "Ensure AWS CloudFront attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-47
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_32: "Ensure CloudFront distribution has a response headers policy attached"
+	FAILED for resource: aws_cloudfront_distribution.cloudfront_distribution
+	File: /terraform/main.tf:403-458
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-65
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_62: "Ensure S3 buckets should have event notifications enabled"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+Check: CKV_AWS_103: "Ensure that load balancer is using at least TLS 1.2"
+	FAILED for resource: aws_lb_listener.alb_listener_http
+	File: /terraform/main.tf:220-229
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-43
+
+		220 | resource "aws_lb_listener" "alb_listener_http" {
+		221 |   load_balancer_arn = aws_lb.alb.arn
+		222 |   port              = 80
+		223 |   protocol          = "HTTP"
+		224 | 
+		225 |   default_action {
+		226 |     type             = "forward"
+		227 |     target_group_arn = aws_lb_target_group.alb_tg.arn
+		228 |   }
+		229 | }
+
+Check: CKV_AWS_103: "Ensure that load balancer is using at least TLS 1.2"
+	FAILED for resource: aws_lb_listener.alb_listener_https
+	File: /terraform/main.tf:231-242
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-43
+
+		231 | resource "aws_lb_listener" "alb_listener_https" {
+		232 |   load_balancer_arn = aws_lb.alb.arn
+		233 |   port              = 443
+		234 |   protocol          = "HTTPS"
+		235 |   ssl_policy = "ELBSecurityPolicy-2016-08"
+		236 |   certificate_arn = "arn:aws:acm:us-east-1:YOUR_ACCOUNT_ID:certificate/YOUR_CERTIFICATE_ID" # Replace with your ACM certificate ARN
+		237 | 
+		238 |   default_action {
+		239 |     type             = "forward"
+		240 |     target_group_arn = aws_lb_target_group.alb_tg.arn
+		241 |   }
+		242 | }
+
+Check: CKV2_AWS_8: "Ensure that RDS clusters has backup plan of AWS Backup"
+	FAILED for resource: aws_rds_cluster.default
+	File: /terraform/main.tf:343-364
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-rds-clusters-has-backup-plan-of-aws-backup
+
+		343 | resource "aws_rds_cluster" "default" {
+		344 |   cluster_identifier      = "react-app-db-cluster"
+		345 |   engine                    = "aurora-postgresql" # Choose either "postgres" or "aurora-postgresql"
+		346 |   engine_version            = "15.4"             # Specify Postgres version
+		347 |   master_username           = "postgres"
+		348 |   master_password           = "YOUR_DB_PASSWORD" # Replace with a secure password, preferably pulled from Secrets Manager
+		349 |   db_subnet_group_name      = aws_db_subnet_group.db_subnet_group.name
+		350 |   vpc_security_group_ids    = [aws_security_group.allow_db.id]
+		351 |   skip_final_snapshot       = true # Remove or set to false in production
+		352 |   availability_zones        = ["us-east-1a", "us-east-1b"]
+		353 |   backup_retention_period = 5 # Specify backup retention in days
+		354 |   preferred_backup_window = "07:00-09:00" # Specify the backup window
+		355 |   preferred_maintenance_window = "Tue:17:00-Tue:19:00" # Specify the maintenance window
+		356 | 
+		357 |   tags = {
+		358 |     Name = "react-app-db-cluster"
+		359 |   }
+		360 | 
+		361 |   lifecycle {
+		362 |     ignore_changes = [master_password]
+		363 |   }
+		364 | }
+
+Check: CKV2_AWS_28: "Ensure public facing ALB are protected by WAF"
+	FAILED for resource: aws_lb.alb
+	File: /terraform/main.tf:192-204
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-public-facing-alb-are-protected-by-waf
+
+		192 | resource "aws_lb" "alb" {
+		193 |   name               = "react-app-alb"
+		194 |   internal           = false
+		195 |   load_balancer_type = "application"
+		196 |   security_groups    = [aws_security_group.allow_alb.id]
+		197 |   subnets            = [aws_subnet.public_subnet_a.id, aws_subnet.public_subnet_b.id]
+		198 | 
+		199 |   enable_deletion_protection = false
+		200 | 
+		201 |   tags = {
+		202 |     Name = "react-app-alb"
+		203 |   }
+		204 | }
+
+Check: CKV2_AWS_74: "Ensure AWS Load Balancers use strong ciphers"
+	FAILED for resource: aws_lb_listener.alb_listener_https
+	File: /terraform/main.tf:231-242
+
+		231 | resource "aws_lb_listener" "alb_listener_https" {
+		232 |   load_balancer_arn = aws_lb.alb.arn
+		233 |   port              = 443
+		234 |   protocol          = "HTTPS"
+		235 |   ssl_policy = "ELBSecurityPolicy-2016-08"
+		236 |   certificate_arn = "arn:aws:acm:us-east-1:YOUR_ACCOUNT_ID:certificate/YOUR_CERTIFICATE_ID" # Replace with your ACM certificate ARN
+		237 | 
+		238 |   default_action {
+		239 |     type             = "forward"
+		240 |     target_group_arn = aws_lb_target_group.alb_tg.arn
+		241 |   }
+		242 | }
+
+Check: CKV2_AWS_11: "Ensure VPC flow logging is enabled in all VPCs"
+	FAILED for resource: aws_vpc.main
+	File: /terraform/main.tf:19-24
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-9-enable-vpc-flow-logging
+
+		19 | resource "aws_vpc" "main" {
+		20 |   cidr_block = "10.0.0.0/16"
+		21 |   tags = {
+		22 |     Name = "react-app-vpc"
+		23 |   }
+		24 | }
+
+Check: CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+Check: CKV_AWS_378: "Ensure AWS Load Balancer doesn't use HTTP protocol"
+	FAILED for resource: aws_lb_target_group.alb_tg
+	File: /terraform/main.tf:206-218
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-378
+
+		206 | resource "aws_lb_target_group" "alb_tg" {
+		207 |   name        = "react-app-alb-tg"
+		208 |   port        = 80
+		209 |   protocol    = "HTTP"
+		210 |   vpc_id      = aws_vpc.main.id
+		211 |   target_type = "instance"
+		212 | 
+		213 |   health_check {
+		214 |     path     = "/"
+		215 |     protocol = "HTTP"
+		216 |     matcher  = "200-399"
+		217 |   }
+		218 | }
+
+Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+Check: CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
+	FAILED for resource: aws_s3_bucket.static_assets
+	File: /terraform/main.tf:377-398
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61
+
+		377 | resource "aws_s3_bucket" "static_assets" {
+		378 |   bucket = "your-react-app-static-assets" # Replace with a unique bucket name
+		379 |   acl    = "private" # Important for security
+		380 | 
+		381 |   tags = {
+		382 |     Name = "react-app-static-assets"
+		383 |   }
+		384 | 
+		385 |   # Enable versioning
+		386 |   versioning {
+		387 |     enabled = true
+		388 |   }
+		389 | 
+		390 |   # Enable server-side encryption
+		391 |   server_side_encryption_configuration {
+		392 |     rule {
+		393 |       apply_server_side_encryption_by_default {
+		394 |         sse_algorithm = "AES256"
+		395 |       }
+		396 |     }
+		397 |   }
+		398 | }
+
+terraform_plan scan results:
+
+Passed checks: 0, Failed checks: 0, Skipped checks: 0, Parsing errors: 2
+
+Error parsing file ./tsconfig.app.json
+Error parsing file ./tsconfig.node.json
+
