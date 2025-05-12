@@ -1,0 +1,34 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "data.aws_iam_policy_document.s3_policy" [label="data.aws_iam_policy_document.s3_policy"];
+  "data.aws_route53_zone.selected_zone" [label="data.aws_route53_zone.selected_zone"];
+  "aws_acm_certificate.app_certificate" [label="aws_acm_certificate.app_certificate"];
+  "aws_acm_certificate_validation.cert_validation" [label="aws_acm_certificate_validation.cert_validation"];
+  "aws_cloudfront_distribution.s3_distribution" [label="aws_cloudfront_distribution.s3_distribution"];
+  "aws_cloudfront_origin_access_control.default" [label="aws_cloudfront_origin_access_control.default"];
+  "aws_route53_record.app_dns_record" [label="aws_route53_record.app_dns_record"];
+  "aws_route53_record.cert_validation_dns" [label="aws_route53_record.cert_validation_dns"];
+  "aws_s3_bucket.cloudfront_logs" [label="aws_s3_bucket.cloudfront_logs"];
+  "aws_s3_bucket.website_assets" [label="aws_s3_bucket.website_assets"];
+  "aws_s3_bucket_policy.website_assets_policy" [label="aws_s3_bucket_policy.website_assets_policy"];
+  "aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block" [label="aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block"];
+  "aws_s3_bucket_public_access_block.website_assets_public_access_block" [label="aws_s3_bucket_public_access_block.website_assets_public_access_block"];
+  "aws_wafv2_web_acl.default" [label="aws_wafv2_web_acl.default"];
+  "random_id.bucket_suffix" [label="random_id.bucket_suffix"];
+  "data.aws_iam_policy_document.s3_policy" -> "aws_cloudfront_distribution.s3_distribution";
+  "aws_acm_certificate_validation.cert_validation" -> "aws_route53_record.cert_validation_dns";
+  "aws_cloudfront_distribution.s3_distribution" -> "aws_acm_certificate_validation.cert_validation";
+  "aws_cloudfront_distribution.s3_distribution" -> "aws_cloudfront_origin_access_control.default";
+  "aws_cloudfront_distribution.s3_distribution" -> "aws_s3_bucket.cloudfront_logs";
+  "aws_cloudfront_distribution.s3_distribution" -> "aws_s3_bucket.website_assets";
+  "aws_cloudfront_distribution.s3_distribution" -> "aws_wafv2_web_acl.default";
+  "aws_route53_record.app_dns_record" -> "aws_cloudfront_distribution.s3_distribution";
+  "aws_route53_record.cert_validation_dns" -> "data.aws_route53_zone.selected_zone";
+  "aws_route53_record.cert_validation_dns" -> "aws_acm_certificate.app_certificate";
+  "aws_s3_bucket.cloudfront_logs" -> "random_id.bucket_suffix";
+  "aws_s3_bucket.website_assets" -> "random_id.bucket_suffix";
+  "aws_s3_bucket_policy.website_assets_policy" -> "data.aws_iam_policy_document.s3_policy";
+  "aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block" -> "aws_s3_bucket.cloudfront_logs";
+  "aws_s3_bucket_public_access_block.website_assets_public_access_block" -> "aws_s3_bucket.website_assets";
+}
