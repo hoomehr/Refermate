@@ -1,0 +1,30 @@
+# Infrastructure Visualization
+
+## Overview
+
+This visualization shows the AWS infrastructure defined in the Terraform files.
+
+## Infrastructure Diagram
+
+![Infrastructure Diagram](infrastructure-diagram.png)
+
+## Resource Summary
+
+![Resource Summary](resource-summary.png)
+
+# Infrastructure Resource Summary
+
+## Resource Counts
+
+| Resource Type | Count |
+|--------------|-------|
+| aws_s3_bucket | 2 |
+| aws_s3_bucket_public_access_block | 2 |
+| aws_route53_record | 2 |
+| random_id | 1 |
+| aws_acm_certificate | 1 |
+| aws_acm_certificate_validation | 1 |
+| aws_cloudfront_origin_access_control | 1 |
+| aws_s3_bucket_policy | 1 |
+| aws_wafv2_web_acl | 1 |
+| aws_cloudfront_distribution | 1 |
