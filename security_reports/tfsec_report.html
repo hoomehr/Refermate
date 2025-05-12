@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>TFSec Security Report</title>
+    <style>
+        body{font-family:Arial,sans-serif;margin:20px}
+        h1{color:#333}
+        table{border-collapse:collapse;width:100%}
+        th,td{text-align:left;padding:8px;border:1px solid #ddd}
+        th{background-color:#f2f2f2}
+        tr:nth-child(even){background-color:#f9f9f9}
+        .critical{background-color:#ffdddd}
+        .high{background-color:#ffffcc}
+        .medium{background-color:#e6f3ff}
+        .low{background-color:#eaffea}
+    </style>
+</head>
+<body>
+    <h1>TFSec Security Scan Results</h1>
+<h2>Found 7 potential security issues</h2>
+<table>
+<tr><th>Rule ID</th><th>Severity</th><th>Description</th><th>Location</th></tr>
+<tr class="high"><td>AVD-AWS-0088</td><td>HIGH</td><td>Bucket does not have encryption enabled</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:79</td></tr>
+<tr class="high"><td>AVD-AWS-0088</td><td>HIGH</td><td>Bucket does not have encryption enabled</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:54</td></tr>
+<tr class="medium"><td>AVD-AWS-0089</td><td>MEDIUM</td><td>Bucket does not have logging enabled</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:79</td></tr>
+<tr class="medium"><td>AVD-AWS-0089</td><td>MEDIUM</td><td>Bucket does not have logging enabled</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:54</td></tr>
+<tr class="medium"><td>AVD-AWS-0090</td><td>MEDIUM</td><td>Bucket does not have versioning enabled</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:79</td></tr>
+<tr class="high"><td>AVD-AWS-0132</td><td>HIGH</td><td>Bucket does not encrypt data with a customer managed key.</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:79</td></tr>
+<tr class="high"><td>AVD-AWS-0132</td><td>HIGH</td><td>Bucket does not encrypt data with a customer managed key.</td><td>/home/runner/work/InfraMate/InfraMate/target_repo/terraform/main.tf:54</td></tr>
+</table>
+</body>
+</html>
