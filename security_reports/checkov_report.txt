@@ -1,0 +1,403 @@
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.2.417 
+
+terraform scan results:
+
+Passed checks: 47, Failed checks: 17, Skipped checks: 0
+
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-24
+Check: CKV_AWS_56: "Ensure S3 bucket has 'restrict_public_buckets' enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.website_assets_public_access_block
+	File: /terraform/main.tf:69-76
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-22
+Check: CKV_AWS_54: "Ensure S3 bucket has block public policy enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.website_assets_public_access_block
+	File: /terraform/main.tf:69-76
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-20
+Check: CKV_AWS_53: "Ensure S3 bucket has block public ACLS enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.website_assets_public_access_block
+	File: /terraform/main.tf:69-76
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-19
+Check: CKV_AWS_55: "Ensure S3 bucket has ignore public ACLs enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.website_assets_public_access_block
+	File: /terraform/main.tf:69-76
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-21
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-24
+Check: CKV_AWS_56: "Ensure S3 bucket has 'restrict_public_buckets' enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block
+	File: /terraform/main.tf:88-95
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-22
+Check: CKV_AWS_54: "Ensure S3 bucket has block public policy enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block
+	File: /terraform/main.tf:88-95
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-20
+Check: CKV_AWS_53: "Ensure S3 bucket has block public ACLS enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block
+	File: /terraform/main.tf:88-95
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-19
+Check: CKV_AWS_55: "Ensure S3 bucket has ignore public ACLs enabled"
+	PASSED for resource: aws_s3_bucket_public_access_block.cloudfront_logs_public_access_block
+	File: /terraform/main.tf:88-95
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-21
+Check: CKV_AWS_233: "Ensure Create before destroy for ACM certificates"
+	PASSED for resource: aws_acm_certificate.app_certificate
+	File: /terraform/main.tf:105-113
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-acm-certificate-enables-create-before-destroy
+Check: CKV_AWS_234: "Verify logging preference for ACM certificates"
+	PASSED for resource: aws_acm_certificate.app_certificate
+	File: /terraform/main.tf:105-113
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-acm-certificates-has-logging-preference
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket_policy.website_assets_policy
+	File: /terraform/main.tf:165-168
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/bc-aws-s3-24
+Check: CKV_AWS_342: "Ensure WAF rule has any actions"
+	PASSED for resource: aws_wafv2_web_acl.default
+	File: /terraform/main.tf:172-228
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-342
+Check: CKV_AWS_175: "Ensure WAF has associated rules"
+	PASSED for resource: aws_wafv2_web_acl.default
+	File: /terraform/main.tf:172-228
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-64
+Check: CKV_AWS_174: "Verify CloudFront Distribution Viewer Certificate is using TLS v1.2"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-63
+Check: CKV_AWS_34: "Ensure CloudFront distribution ViewerProtocolPolicy is set to HTTPS"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-32
+Check: CKV_AWS_216: "Ensure CloudFront distribution is enabled"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-cloudfront-distribution-is-enabled
+Check: CKV_AWS_305: "Ensure CloudFront distribution has a default root object configured"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-305
+Check: CKV_AWS_68: "CloudFront Distribution should have WAF enabled"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-27
+Check: CKV_AWS_86: "Ensure CloudFront distribution has Access Logging enabled"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-20
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	PASSED for resource: aws.default
+	File: /terraform/main.tf:13-15
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-5
+Check: CKV_AWS_111: "Ensure IAM policies does not allow write access without constraints"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-write-access-without-constraint
+Check: CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-43
+Check: CKV_AWS_108: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-data-exfiltration
+Check: CKV_AWS_110: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-does-not-allow-privilege-escalation
+Check: CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-credentials-exposure
+Check: CKV_AWS_109: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-iam-policies-do-not-allow-permissions-management-resource-exposure-without-constraint
+Check: CKV_AWS_1: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/iam-23
+Check: CKV_AWS_356: "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-356
+Check: CKV_AWS_283: "Ensure no IAM policies documents allow ALL or any AWS principal permissions to the resource"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-283
+Check: CKV_AWS_358: "Ensure AWS GitHub Actions OIDC authorization policies only allow safe claims and claim order"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/iam-358
+Check: CKV2_AWS_54: "Ensure AWS CloudFront distribution is using secure SSL protocols for HTTPS communication"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-2-54
+Check: CKV2_AWS_42: "Ensure AWS CloudFront distribution uses custom SSL certificate"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-cloudfront-distribution-uses-custom-ssl-certificate
+Check: CKV2_AWS_72: "Ensure AWS CloudFront origin protocol policy enforces HTTPS-only"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-2-72
+Check: CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
+	PASSED for resource: aws_iam_policy_document.s3_policy
+	File: /terraform/main.tf:147-163
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40
+Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning
+Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone
+Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
+	PASSED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+	PASSED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	PASSED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest
+Check: CKV2_AWS_46: "Ensure AWS CloudFront Distribution with S3 have Origin Access set to enabled"
+	PASSED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-aws-cloudfromt-distribution-with-s3-have-origin-access-set-to-enabled
+Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+	PASSED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached
+Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+	PASSED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached
+Check: CKV2_AWS_23: "Route53 A Record has Attached Resource"
+	PASSED for resource: aws_route53_record.app_dns_record
+	File: /terraform/main.tf:303-313
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-route53-a-record-has-an-attached-resource
+Check: CKV_AWS_192: "Ensure WAF prevents message lookup in Log4j2. See CVE-2021-44228 aka log4jshell"
+	FAILED for resource: aws_wafv2_web_acl.default
+	File: /terraform/main.tf:172-228
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-waf-prevents-message-lookup-in-log4j2
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_310: "Ensure CloudFront distributions should have origin failover configured"
+	FAILED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-310
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_AWS_374: "Ensure AWS CloudFront web distribution has geo restriction enabled"
+	FAILED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-374
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_32: "Ensure CloudFront distribution has a response headers policy attached"
+	FAILED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-65
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_62: "Ensure S3 buckets should have event notifications enabled"
+	FAILED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62
+
+		54 | resource "aws_s3_bucket" "website_assets" {
+		55 |   bucket = "${var.project_name}-assets-${random_id.bucket_suffix.hex}" # Ensures unique bucket name
+		56 |   tags   = var.common_tags
+		57 | 
+		58 |   # It's good practice to enable versioning
+		59 |   versioning {
+		60 |     enabled = true
+		61 |   }
+		62 | }
+
+Check: CKV2_AWS_62: "Ensure S3 buckets should have event notifications enabled"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+Check: CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+	FAILED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		54 | resource "aws_s3_bucket" "website_assets" {
+		55 |   bucket = "${var.project_name}-assets-${random_id.bucket_suffix.hex}" # Ensures unique bucket name
+		56 |   tags   = var.common_tags
+		57 | 
+		58 |   # It's good practice to enable versioning
+		59 |   versioning {
+		60 |     enabled = true
+		61 |   }
+		62 | }
+
+Check: CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+Check: CKV2_AWS_31: "Ensure WAF2 has a Logging Configuration"
+	FAILED for resource: aws_wafv2_web_acl.default
+	File: /terraform/main.tf:172-228
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-logging-33
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_47: "Ensure AWS CloudFront attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability"
+	FAILED for resource: aws_cloudfront_distribution.s3_distribution
+	File: /terraform/main.tf:232-300
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-47
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
+	FAILED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61
+
+		54 | resource "aws_s3_bucket" "website_assets" {
+		55 |   bucket = "${var.project_name}-assets-${random_id.bucket_suffix.hex}" # Ensures unique bucket name
+		56 |   tags   = var.common_tags
+		57 | 
+		58 |   # It's good practice to enable versioning
+		59 |   versioning {
+		60 |     enabled = true
+		61 |   }
+		62 | }
+
+Check: CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+	FAILED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging
+
+		54 | resource "aws_s3_bucket" "website_assets" {
+		55 |   bucket = "${var.project_name}-assets-${random_id.bucket_suffix.hex}" # Ensures unique bucket name
+		56 |   tags   = var.common_tags
+		57 | 
+		58 |   # It's good practice to enable versioning
+		59 |   versioning {
+		60 |     enabled = true
+		61 |   }
+		62 | }
+
+Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+Check: CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+	FAILED for resource: aws_s3_bucket.website_assets
+	File: /terraform/main.tf:54-62
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+		54 | resource "aws_s3_bucket" "website_assets" {
+		55 |   bucket = "${var.project_name}-assets-${random_id.bucket_suffix.hex}" # Ensures unique bucket name
+		56 |   tags   = var.common_tags
+		57 | 
+		58 |   # It's good practice to enable versioning
+		59 |   versioning {
+		60 |     enabled = true
+		61 |   }
+		62 | }
+
+Check: CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+	FAILED for resource: aws_s3_bucket.cloudfront_logs
+	File: /terraform/main.tf:79-86
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+		79 | resource "aws_s3_bucket" "cloudfront_logs" {
+		80 |   bucket = "${var.project_name}-cf-logs-${random_id.bucket_suffix.hex}"
+		81 |   tags   = var.common_tags
+		82 | 
+		83 |   lifecycle {
+		84 |     prevent_destroy = false # Set to true in production if you want to keep logs
+		85 |   }
+		86 | }
+
+terraform_plan scan results:
+
+Passed checks: 0, Failed checks: 0, Skipped checks: 0, Parsing errors: 2
+
+Error parsing file ./tsconfig.app.json
+Error parsing file ./tsconfig.node.json
+
